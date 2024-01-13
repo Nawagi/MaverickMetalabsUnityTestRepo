@@ -19,15 +19,6 @@ public class RoundManager : MonoBehaviour
     private int fibonacciTermTwo = 1;
     private int currentFibonacciSequence;
 
-    //called by pause button
-    public void PauseGame()
-    {
-        if (Time.timeScale == 0)
-            Time.timeScale = 1;
-        else if (Time.timeScale == 1)
-            Time.timeScale = 0;
-    }
-
     #region Subscribing to Events
 
     private void OnEnable()
@@ -69,4 +60,15 @@ public class RoundManager : MonoBehaviour
     }
 
     #endregion Subscribing to Events
+
+
+    #region For Test Purposes
+
+    public int CheckFibonacciSequencePerRound()
+    {
+        currentRound++;
+        return GetCurrentFibonacciSequence();
+    }
+
+    #endregion For Test Purposes
 }

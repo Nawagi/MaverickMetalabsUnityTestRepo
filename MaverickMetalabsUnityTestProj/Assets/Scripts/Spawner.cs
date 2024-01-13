@@ -9,7 +9,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Patrick patrickPrefab;
     private IObjectPool<Patrick> patrickPool;
 
-    [SerializeField] private float yPosOffset = 2.5f;
+    [SerializeField] private float xPosOffset = 1f;
+    [SerializeField] private float yPosSpawnOffset = 2.5f;
     [SerializeField] private int spawnedAmount;
     [SerializeField] private int amountToSpawn;
     [SerializeField] private float spawnIntervalSeconds = .2f;
@@ -26,7 +27,7 @@ public class Spawner : MonoBehaviour
 
         roundPatrickList = new List<Patrick>();
 
-        transform.position = new Vector3(Camera.main.ViewportToWorldPoint(Vector3.zero).x - 1, 
+        transform.position = new Vector3(Camera.main.ViewportToWorldPoint(Vector3.zero).x - xPosOffset, 
                                          transform.position.y, transform.position.z);
     }
 
@@ -39,7 +40,7 @@ public class Spawner : MonoBehaviour
 
     private void OnGet(Patrick patrick)
     {
-        float randomYPos = Random.Range(transform.position.y - yPosOffset, transform.position.y + yPosOffset);
+        float randomYPos = Random.Range(transform.position.y - yPosSpawnOffset, transform.position.y + yPosSpawnOffset);
         patrick.transform.position = new Vector3(transform.position.x, randomYPos, transform.position.z);
         roundPatrickList.Add(patrick);
         patrick.gameObject.SetActive(true);

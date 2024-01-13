@@ -34,15 +34,8 @@ public class Patrick : MonoBehaviour
         {
             EventManager.Instance.PatrickOffScreen();
             Invoke("ReleasePool", 1f);
-            //StartCoroutine(WaitToDeactivateRoutine());
         }
     }
-
-    /*IEnumerator WaitToDeactivateRoutine()
-    {
-        yield return new WaitForSeconds(1);
-        patrickPool.Release(this);
-    }*/
 
     void ReleasePool()
     {
